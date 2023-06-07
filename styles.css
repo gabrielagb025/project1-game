@@ -1,8 +1,46 @@
-html {
+html, body {
     height: 100%;
     width: 100%;
   }
 
-#my-canvas {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .container-game {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  #my-canvas {
+      border: 1px solid black;
+      
+  }
+
+  #table-points {
     border: 1px solid black;
-}
+    margin-left: 15px;
+    width: 200px;
+    height: 220px;
+  }
+
+  #table-points ul {
+    list-style: none;
+    margin-left: -20px;
+  }
+
+  #logo-image {
+    border: 1px solid black;
+    margin-left: 15px;
+    width: 200px;
+    height: 150px;
+    margin-bottom: 28px;
+  }
+  
+  .container-logo-points {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }

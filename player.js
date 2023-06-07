@@ -3,20 +3,20 @@ class Player {
         this.ctx = ctx;
         this.game = game;
         this.x = 300;
-        this.y = 250;
-        this.width = 60;
-
-        this.image = new Image();
-        this.image.src = "./images/rabbit-sheet.png";
-        this.image.onload = () => {
-            this.height = this.image.height / this.yFramesCount;
-            this.isReady = true;
-        }
+        this.y = 420;
+        this.width = 80;
 
         this.xFrame = 0;
         this.yFrame = 0;
         this.xFramesCount = 2;
         this.yFramesCount = 6;
+
+        this.image = new Image();
+        this.image.src = "./images/rabbit-sheet.png";
+        this.image.onload = () => {
+            this.height = this.image.height / 6;
+            this.isReady = true;
+        }
 
         this.lastDirection = null;
 
@@ -117,8 +117,8 @@ class Player {
             }     
         }
 
-        if (this.y >= this.ctx.canvas.height - this.height - 90) {
-            this.y = this.ctx.canvas.height - this.height - 90;
+        if (this.y >= this.ctx.canvas.height - this.height - 180) {
+            this.y = this.ctx.canvas.height - this.height - 180;
             this.vy = 0;
             this.actions.isJumping = false;
         }
