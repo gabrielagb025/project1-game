@@ -1,5 +1,5 @@
 class Obstacle {
-    constructor(ctx, x, y, width, height, imageSrc, vy) {
+    constructor(ctx, x, y, width, height, imageSrc, type, vy) {
         this.ctx = ctx;
         this.x = x;
         this.y = y;
@@ -13,6 +13,7 @@ class Obstacle {
             this.isReady = true;
         }
 
+        this.type = type;
         this.vy = vy;
     }
 

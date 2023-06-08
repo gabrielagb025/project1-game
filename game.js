@@ -47,11 +47,14 @@ class Game {
 
     addObstacle() {
         const width = 50;
-        const height = 50;
-        const randomX = Math.floor(Math.random() * (this.ctx.canvas.width - width));   
-        const imageSrc = getRandomImageSrc();
+        const height = 60;
+        const randomX = Math.floor(Math.random() * (this.ctx.canvas.width - width));
+        const randomIndex = Math.floor(Math.random() * ALL_EGGS.length);
+        const imageName = ALL_EGGS[randomIndex];   
+        const imageSrc = TYPES[imageName];
+        const type = imageName;
         const vy = 2;
-        const newObstacle = new Obstacle(this.ctx, randomX, -height, width, height, imageSrc, vy);
+        const newObstacle = new Obstacle(this.ctx, randomX, -height, width, height, imageSrc, type, vy);
         this.obstacles.push(newObstacle);
     }
 
@@ -61,10 +64,10 @@ class Game {
               this.player.x <= obstacle.x + obstacle.width &&
               this.player.y + this.player.height >= obstacle.y &&
               this.player.y <= obstacle.y + obstacle.height) {
-
-                if (LEVEL_1.catch.includes(obstacle.imageSrc)) {
+                console.log("está colisionando");
+                if (LEVEL_1.catch.includes(obstacle.type)) {
                     console.log("este es bueno");
-                } else if (LEVEL_1.noCatch.includes(obstacle.imageSrc)) {
+                } else if (LEVEL_1.noCatch.includes(obstacle.type)) {
                     console.log("este es malo");
                 }
             }
