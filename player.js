@@ -3,18 +3,21 @@ class Player {
         this.ctx = ctx;
         this.game = game;
         this.x = 300;
-        this.y = 420;
-        this.width = 80;
+        this.y = 480;
+        this.width = 110;
 
         this.xFrame = 0;
         this.yFrame = 0;
         this.xFramesCount = 2;
-        this.yFramesCount = 6;
+        this.yFramesCount = 4;
 
         this.image = new Image();
-        this.image.src = "./images/rabbit-sheet.png";
+        this.image.src = "./images/conejo sheet.png";
         this.image.onload = () => {
-            this.height = this.image.height / 6;
+            const frameWidth = this.image.width / this.xFramesCount;
+            const frameHeight = this.image.height / this.yFramesCount;
+            const aspectRatio = frameWidth / frameHeight;
+            this.height = this.width / aspectRatio;
             this.isReady = true;
         }
 
@@ -62,18 +65,18 @@ class Player {
         // Para las animaciones
 
         if (this.movements.left) {
-            this.yFrame = 5;
+            this.yFrame = 3;
             this.speedX = -4;
-            if (this.game.counter % 14 === 0 && !this.actions.isJumping) {
+            if (this.game.counter % 10 === 0 && !this.actions.isJumping) {
                 this.xFrame++;
                 if (this.xFrame >= this.xFramesCount) {
                     this.xFrame = 0;
                 }
             }
         } else if (this.movements.right) {
-            this.yFrame = 2;
+            this.yFrame = 1;
             this.speedX = 4;
-            if (this.game.counter % 14 === 0 && !this.actions.isJumping) {
+            if (this.game.counter % 10 === 0 && !this.actions.isJumping) {
                 this.xFrame++;
                 if (this.xFrame >= this.xFramesCount) {
                     this.xFrame = 0;
@@ -82,7 +85,7 @@ class Player {
         } else if (isStop) {                                    // Hago otra condición para cuando el player está parado.
             this.speedX = 0;                                    // Le digo que la velocidadX sea 0 para que se quede parado.
             if (this.lastDirection === "left") {                // Si la última dirección es izquierda:
-                this.yFrame = 3;
+                this.yFrame = 2;
                 if (this.game.counter % 18 === 0 && !this.actions.isJumping) {
                     this.xFrame++;
                     if (this.xFrame >= this.xFramesCount) {
@@ -109,16 +112,16 @@ class Player {
 
         if (this.actions.isJumping) {
             if (this.lastDirection === "left") {
-                this.yFrame = 5;
+                this.yFrame = 3;
                 this.xFrame = 1;
             } else if (this.lastDirection === "right") {
-                this.yFrame = 2;
+                this.yFrame = 1;
                 this.xFrame = 0;
             }     
         }
 
-        if (this.y >= this.ctx.canvas.height - this.height - 180) {
-            this.y = this.ctx.canvas.height - this.height - 180;
+        if (this.y >= this.ctx.canvas.height - this.height - 120) {
+            this.y = this.ctx.canvas.height - this.height - 120;
             this.vy = 0;
             this.actions.isJumping = false;
         }

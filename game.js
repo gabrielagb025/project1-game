@@ -4,6 +4,7 @@ class Game {
         this.background = new Background(ctx);
         this.player = new Player(ctx, this);
         this.obstacles = [];
+        this.points = [];
 
         this.intervalId = null;
         this.counter = 0;
@@ -59,7 +60,7 @@ class Game {
     }
 
     checkCollisions() {
-        this.obstacles.forEach((obstacle) => {
+        this.obstacles.forEach((obstacle, index) => {
             if (this.player.x + this.player.width >= obstacle.x &&
               this.player.x <= obstacle.x + obstacle.width &&
               this.player.y + this.player.height >= obstacle.y &&
@@ -67,12 +68,17 @@ class Game {
                 console.log("está colisionando");
                 if (LEVEL_1.catch.includes(obstacle.type)) {
                     console.log("este es bueno");
+                    this.points.push(obstacle);
+                    this.obstacles.splice(index, 1);
                 } else if (LEVEL_1.noCatch.includes(obstacle.type)) {
                     console.log("este es malo");
+                    this.obstacles.splice(index, 1);
                 }
+                console.log(this.points);
             }
         })
     }
+
 
     onKeyEvent(event) {
         this.player.onKeyEvent(event);
