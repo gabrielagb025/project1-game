@@ -18,16 +18,11 @@ html, body {
       border: 1px solid black;
   }
 
-  #table-points {
+  #points-container {
     border: 1px solid black;
     margin-left: 15px;
     width: 300px;
     height: 350px;
-  }
-
-  #table-points ul {
-    list-style: none;
-    margin-left: -20px;
   }
 
   #logo-image {

@@ -3,8 +3,10 @@ class Game {
         this.ctx = ctx
         this.background = new Background(ctx);
         this.player = new Player(ctx, this);
+        this.lives = [new Life(this.ctx, 900, 20), new Life(this.ctx, 950, 20), new Life(this.ctx, 1000, 20) ];
         this.obstacles = [];
         this.points = [];
+    
 
         this.intervalId = null;
         this.counter = 0;
@@ -29,6 +31,9 @@ class Game {
         this.ctx.imageSmoothingEnabled = false;
         this.background.draw();
         this.player.draw();
+        this.lives.forEach((life) => {
+            life.draw();
+        })
         this.obstacles.forEach((obstacle) => {
             obstacle.draw();
         })
@@ -59,6 +64,16 @@ class Game {
         this.obstacles.push(newObstacle);
     }
 
+    addLives() {
+        if (this.lives.length === 3) {
+            return 
+        }
+        const lastXlife =  this.lives[0].x
+        
+        const newLife = new Life(this.ctx, lastXlife - 50, 20);
+        this.lives = [newLife, ...this.lives]
+    }
+
     checkCollisions() {
         this.obstacles.forEach((obstacle, index) => {
             if (this.player.x + this.player.width >= obstacle.x &&
@@ -73,6 +88,7 @@ class Game {
                 } else if (LEVEL_1.noCatch.includes(obstacle.type)) {
                     console.log("este es malo");
                     this.obstacles.splice(index, 1);
+                    this.lives.shift();
                 }
                 console.log(this.points);
             }
