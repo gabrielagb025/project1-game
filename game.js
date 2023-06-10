@@ -86,8 +86,8 @@ class Game {
 
     addFloorObstacle() {
         const width = 35;
-        const x = 0;
-        const y = 490; 
+        const x = -this.ctx.canvas.width;
+        const y = 490;
         const height = 35;
         const vx = 5;
 

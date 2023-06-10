@@ -4,10 +4,10 @@ class Life {
         this.x = x;
         this.y = y;
         this.width = 40;
-        this.height= 40;
+        this.height= 50;
 
         this.image = new Image();
-        this.image.src = "./images/circulos/orange.png"
+        this.image.src = "./images/zanahoria.PNG"
         this.image.onload = () => {
             this.isReady = true;
         }

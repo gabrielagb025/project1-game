@@ -12,7 +12,7 @@ class Player {
         this.yFramesCount = 4;
 
         this.image = new Image();
-        this.image.src = "./images/conejo sheet.png";
+        this.image.src = "./images/conejo 2.png";
         this.image.onload = () => {
             const frameWidth = this.image.width / this.xFramesCount;
             const frameHeight = this.image.height / this.yFramesCount;
