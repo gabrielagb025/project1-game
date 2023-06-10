@@ -4,25 +4,36 @@ class Game {
         this.background = new Background(ctx);
         this.player = new Player(ctx, this);
         this.lives = [new Life(this.ctx, 900, 20), new Life(this.ctx, 950, 20), new Life(this.ctx, 1000, 20) ];
+        this.floorObstacle = [];
         this.obstacles = [];
-        this.points = [];
     
+        this.scores = {
+            yellow: 3,
+            blue: 4,
+            green: 2
+        }
 
         this.intervalId = null;
         this.counter = 0;
     }
 
     start() {
+        points(this.scores);
         this.intervalId = setInterval(() => {
             this.clear();
             this.move();
             this.draw();
             this.checkCollisions();
             this.counter++;
-            
+
             if (this.counter % 90 === 0) {
                 this.addObstacle();
             };
+
+
+            if (this.counter % 120 === 0) {
+                this.addFloorObstacle();
+            }
 
         }, 1000 / 60);
     }
@@ -64,6 +75,14 @@ class Game {
         this.obstacles.push(newObstacle);
     }
 
+    addFloorObstacle() {
+        const x = -this.width;
+        const y = 600;
+        const vx = 2;
+        const newFloorObstacle = new FloorObstacle(this.ctx, x, y, vx);
+        this.floorObstacle.push(newFloorObstacle);
+    }
+
     addLives() {
         if (this.lives.length === 3) {
             return 
@@ -72,25 +91,35 @@ class Game {
         
         const newLife = new Life(this.ctx, lastXlife - 50, 20);
         this.lives = [newLife, ...this.lives]
+
     }
 
     checkCollisions() {
+        const scoresColors = Object.keys(this.scores);
         this.obstacles.forEach((obstacle, index) => {
             if (this.player.x + this.player.width >= obstacle.x &&
               this.player.x <= obstacle.x + obstacle.width &&
               this.player.y + this.player.height >= obstacle.y &&
               this.player.y <= obstacle.y + obstacle.height) {
-                console.log("está colisionando");
-                if (LEVEL_1.catch.includes(obstacle.type)) {
+             
+                if (scoresColors.includes(obstacle.type)) {
                     console.log("este es bueno");
-                    this.points.push(obstacle);
                     this.obstacles.splice(index, 1);
-                } else if (LEVEL_1.noCatch.includes(obstacle.type)) {
+                    if (this.scores[obstacle.type] >= 1) {
+                        this.scores[obstacle.type]--
+                    } else {
+                        this.lives.shift();
+                    }
+                    points(this.scores);
+                } else {
                     console.log("este es malo");
                     this.obstacles.splice(index, 1);
                     this.lives.shift();
+                    
+                        if (this.lives.length === 0) {
+                            this.gameOver();
+                        }
                 }
-                console.log(this.points);
             }
         })
     }
@@ -98,6 +127,10 @@ class Game {
 
     onKeyEvent(event) {
         this.player.onKeyEvent(event);
+    }
+
+    gameOver() {
+        console.log("game over");
     }
     
 }

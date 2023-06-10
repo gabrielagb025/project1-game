@@ -1,55 +1,29 @@
-const scores = {
-  yellow: 3,
-  blue: 4,
-  green: 2
-}
+
 
 const pointsContainer = document.querySelector("#points-container");
 
 const typeKeys = Object.keys(TYPES);
 
-const scoresKeys = Object.keys(scores);
+function points(scores) {
+    pointsContainer.innerHTML = ''
+    Object.keys(scores).forEach((color, index) => { // [ yellow, blue, green]
+        const eggContainer =  document.createElement("div");
+        eggContainer.classList.add('egg-container')
+        eggContainer.id = `egg-container-${index}`
 
-const scoresVal = Object.values(scores);
-
-function points() {
-    
-    if (scores.yellow) {
-        const firstDiv = document.createElement("div");
-        const imgElement = document.createElement("img");
-        typeKeys.forEach((key) => {
-            if (key === scoresKeys[0]) {
-                imgElement.src = TYPES[key];
+        if (scores[color] > 0) {
+            for (i = 0; i < scores[color]; i++) {
+                const imgEgg = document.createElement("img");
+                imgEgg.src = TYPES[color];
+                eggContainer.append(imgEgg)
             }
-        });
-        firstDiv.appendChild(imgElement)
-        pointsContainer.appendChild(firstDiv);
-    }
+        } else {
+            console.log("no cojas más");
+        }
+       
 
-    if (scores.blue) {
-        const secondDiv = document.createElement("div");
-        const imgElement = document.createElement("img");
-        typeKeys.forEach((key) => {
-            if (key === scoresKeys[1]) {
-                imgElement.src = TYPES[key];
-            }
-        })
-        secondDiv.appendChild(imgElement)
-        pointsContainer.appendChild(secondDiv);
-    }
-
-    if (scores.green) {
-        const thirdDiv = document.createElement("div");
-        const imgElement = document.createElement("img");
-        typeKeys.forEach((key) => {
-            if (key === scoresKeys[2]) {
-                imgElement.src = TYPES[key];
-            }
-        })
-        thirdDiv.appendChild(imgElement)
-        pointsContainer.appendChild(thirdDiv);
-    }
-
-    return pointsContainer;
+        pointsContainer.append(eggContainer)
+    })
 }
+
 
