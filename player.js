@@ -35,7 +35,7 @@ class Player {
 
         this.speedX = 0;
         this.vy = 0;
-        this.gravity = 0.5;
+        this.gravity = 0.4;
     }
 
     draw() {
@@ -66,7 +66,7 @@ class Player {
 
         if (this.movements.left) {
             this.yFrame = 3;
-            this.speedX = -4;
+            this.speedX = -5;
             if (this.game.counter % 10 === 0 && !this.actions.isJumping) {
                 this.xFrame++;
                 if (this.xFrame >= this.xFramesCount) {
@@ -75,7 +75,7 @@ class Player {
             }
         } else if (this.movements.right) {
             this.yFrame = 1;
-            this.speedX = 4;
+            this.speedX = 5;
             if (this.game.counter % 10 === 0 && !this.actions.isJumping) {
                 this.xFrame++;
                 if (this.xFrame >= this.xFramesCount) {

@@ -1,8 +1,10 @@
 class FloorObstacle {
-    constructor(ctx, x, y, vx) {
+    constructor(ctx, x, y, width, height, vx) {
         this.ctx = ctx;
         this.x = x;
         this.y = y;
+        this.width = width;
+        this.height = height;
 
         this.vx = vx;
 
@@ -21,10 +23,9 @@ class FloorObstacle {
                 this.image,
                 this.x,
                 this.y,
-                30,
-                30
+                this.width,
+                this.height
             )
-            console.log("se pinta")
         }
     }
     
