@@ -142,6 +142,10 @@ class Game {
                 this.player.y <= floorObstacle.y + floorObstacle.height) {
                     this.floorObstacles.splice(index, 1)
                     this.lives.shift();
+
+                        if (this.lives.length === 0) {
+                            this.gameOver();
+                        }
                 }
         })
     }
@@ -150,9 +154,10 @@ class Game {
     onKeyEvent(event) {
         this.player.onKeyEvent(event);
     }
-
-    gameOver() {
-        console.log("game over");
-    }
     
+    gameOver() {
+        clearInterval(this.intervalId);
+        containerGame.style.display = "none";
+        gameOverScreen.style.display = "block";
+    } 
 }

@@ -10,7 +10,20 @@
 
 <body>
 
-    <div class="home-screen"></div>
+    <div id="home-screen">
+      <div id="home-screen-image"></div>
+      <div id="home-screen-buttons">
+        <button class="button" id="start-button">Start</button>
+        <button class="button" id="instructions-button">Instructions</button>
+      </div>
+    </div>
+
+    <div id="instructions-screen" style="display: none">
+      <div id="instructions-image"></div>
+      <div id="back-button-container">
+        <button class="button" id="back-button">Back</button>
+      </div>
+    </div>
 
     <div class="container-game"> 
         <canvas id="my-canvas" width="1100" height="650"></canvas>
@@ -19,7 +32,15 @@
           <div id="points-container">
           </div>
         </div>
-   </div>  
+    </div>  
+
+    <div id="game-over-screen" style="display: none">
+      <div id="game-over-image"></div>
+      <div id="game-over-buttons">
+        <button class="button" id="restart-button">Restart</button>
+        <button class="button" id="go-home-screen-button">Home Screen</button>
+      </div>
+    </div>
 
 
 

@@ -8,6 +8,109 @@ html, body {
     padding: 0;
   }
 
+  #home-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #8bb06a;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #home-screen-image {
+      border: 1px solid black;
+      width: 500px;
+      height: 400px;
+      margin-top: -40px;
+      margin-bottom: 20px;
+    }
+
+    #home-screen-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 100px;
+      margin-top: 20px;
+    }
+
+    .button {
+      font-size: 20px;
+      width: 200px;
+      padding: 20px 40px;
+      border: none;
+      background-color:#efd870;
+      border-radius: 10px;
+      color:#5d4734
+    }
+
+    .button:hover {
+      cursor: pointer;
+      background-color: #ecd157;
+    }
+
+    #instructions-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #b1d5e3;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #instructions-image {
+      border: 1px solid black;
+      width: 500px;
+      height: 400px;
+      margin-top: -40px;
+      margin-bottom: 20px;
+    }
+
+    #back-button-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #game-over-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #c6ae68;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #game-over-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 100px;
+      margin-top: 20px;
+    }
+
+    #game-over-image {
+      border: 1px solid black;
+      width: 500px;
+      height: 400px;
+      margin-top: -40px;
+      margin-bottom: 20px;
+    }
+
   .container-game {
     display: flex;
     flex-direction: row;

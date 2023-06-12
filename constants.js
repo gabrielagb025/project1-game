@@ -19,3 +19,5 @@ const LEVEL_1 = {
     catch: ["blue", "orange", "yellow"],
     noCatch: ["green", "pink", "red"]
 }
+
+
