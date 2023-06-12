@@ -1,6 +1,6 @@
-const homeScreen = document.querySelector("#home-screen");
-const instructionsScreen = document.querySelector("#instructions-screen");
-const gameOverScreen = document.querySelector("#game-over-screen");
+const homeScreen = document.querySelector(".home-screen");
+const instructionsScreen = document.querySelector(".instructions-screen");
+const gameOverScreen = document.querySelector(".game-over-screen");
 
 const startButton = document.querySelector("#start-button");
 const instructionsButton = document.querySelector("#instructions-button");
@@ -17,44 +17,34 @@ const game = new Game(ctx);
 document.addEventListener("keydown", (event) => game.onKeyEvent(event));
 document.addEventListener("keyup", (event) => game.onKeyEvent(event));
 
-function stopGame() {
-    game.gameOver();
-}
-
 function startGame() {
-    homeScreen.style.display = "none";
-    containerGame.style.display = "in-line";
+    homeScreen.classList.add('hidden');
+    containerGame.classList.remove('hidden');
     game.start();
 }
 
 function restartGame() {
-    gameOverScreen.style.display = "none";
-    startGame()
-}
-
-function goToHomeScreen() {
-    gameOverScreen.style.display = "none";
-    homeScreen.style.display = "block";
+    console.log("object");
+    document.location.reload();
 }
 
 function showInstructions() {
-    homeScreen.style.display = "none";
-    instructionsScreen.style.display = "block";
+    homeScreen.classList.add('hidden');
+    instructionsScreen.classList.remove('hidden');
 }
 
 function goBackToHomeScreen() {
-    instructionsScreen.style.display = "none";
-    homeScreen.style.display = "block";
+    instructionsScreen.classList.add('hidden');
+    homeScreen.classList.remove('hidden');
 }
 
 function showGameOverScreen() {
-    containerGame.style.display = "none";
-    gameOverScreen.style.display = "block";
+    containerGame.classList.add('hidden');
+    gameOverScreen.classList.remove('hidden');
 }
 
 startButton.addEventListener("click", startGame);
 instructionsButton.addEventListener("click", showInstructions);
 backButton.addEventListener("click", goBackToHomeScreen);
-restartButton.addEventListener("click", );
-goHomeScreenButton.addEventListener("click", goToHomeScreen);
+restartButton.addEventListener("click", restartGame);
 
