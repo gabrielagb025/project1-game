@@ -10,7 +10,7 @@ class FloorObstacle {
         this.vx = vx;
 
         this.xFrame = 0;
-        this.yFrame = 0
+        this.yFrame = vx > 0 ? 0 : 1;
         this.xFramesCount = 5;
         this.yFramesCount = 2;
 
@@ -48,24 +48,12 @@ class FloorObstacle {
     move() {
         this.x += this.vx;
 
-        if (this.x <= 0) {
-            this.yFrame = 0;
             if (this.game.counter % 8 === 0) {
                 this.xFrame++;
                 if (this.xFrame >= this.xFramesCount) {
                     this.xFrame = 0;
                 }
             }
-        }
-
-        if (this.x > 0) {
-            this.yFrame = 1;
-            if (this.game.counter % 8 === 0) {
-                this.xFrame++;
-                if (this.xFrame >= this.xFramesCount) {
-                    this.xFrame = 0;
-                }
-            }
-        }
+        
     }
 }

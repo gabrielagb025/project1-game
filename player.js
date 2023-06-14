@@ -154,11 +154,15 @@ class Player {
                     break;
                 case KEY_LEFT:
                     this.movements.left = eventDown;
-                    this.lastDirection = "left";        // Indico que la última dirección a la que he ido es left.
+                    if (eventDown) {
+                        this.lastDirection = "left";        // Indico que la última dirección a la que he ido es left.
+                    }
                     break;
                 case KEY_RIGHT: 
                     this.movements.right = eventDown;
-                    this.lastDirection = "right";       // Indico que la última dirección a la que he ido es right.
+                    if (eventDown) {
+                        this.lastDirection = "right";        // Indico que la última dirección a la que he ido es left.
+                    }                                        // Indico que la última dirección a la que he ido es right.
                     break;    
             }
         } 

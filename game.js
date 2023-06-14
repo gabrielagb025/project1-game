@@ -33,9 +33,13 @@ class Game {
             };
 
             
-            /*if (this.counter % randomNumber === 0) {
+            if (this.counter % randomNumber === 0) {
                 this.addFloorObstacle();
-            }*/
+            }
+
+            if(this.levelSelected > LEVELS.length - 1){
+                this.winGame();
+            }
 
         }, 1000 / 60);
     }
@@ -98,7 +102,9 @@ class Game {
         const vx = x < 0 ? 4 : -4;
 
         const newFloorObstacle = new FloorObstacle(this.ctx, this, x, y, width, height, vx);
+        if (this.levelSelected >= 1) {
         this.floorObstacles.push(newFloorObstacle);
+        }
     }
 
     addLives() {
@@ -193,10 +199,12 @@ class Game {
     }
 
     winGame() {
-            clearInterval(this.intervalId);
+            console.log("ganaste");
+            showWinGameScreen();
+            /*clearInterval(this.intervalId);
             this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
             this.ctx.font = '32px Arial';
             this.ctx.fillText('ganaste', (this.ctx.canvas.width / 2) - 50, (this.ctx.canvas.height / 2) - 20);
-            console.log("ganaste");
+            console.log("ganaste");*/
     }
 } 

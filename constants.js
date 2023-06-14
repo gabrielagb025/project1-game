@@ -72,9 +72,9 @@ const LEVEL_3 = {
         pink: 2*/
     },
 
-    numCounter: 70,
+    numCounter: 80,
 
-    speedY: 5
+    speedY: 6
 
 };
 

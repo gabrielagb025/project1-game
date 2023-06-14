@@ -1,11 +1,13 @@
 const homeScreen = document.querySelector(".home-screen");
 const instructionsScreen = document.querySelector(".instructions-screen");
 const gameOverScreen = document.querySelector(".game-over-screen");
+const winScreen = document.querySelector(".win-screen");
 
 const startButton = document.querySelector("#start-button");
 const instructionsButton = document.querySelector("#instructions-button");
 const backButton = document.querySelector("#back-button");
-const restartButton = document.querySelector("#restart-button");
+const restartButton1 = document.querySelector("#restart-button1");
+const restartButton2 = document.querySelector("#restart-button2");
 const goHomeScreenButton = document.querySelector("#go-home-screen-button");
 
 const containerGame = document.querySelector(".container-game");
@@ -24,7 +26,6 @@ function startGame() {
 }
 
 function restartGame() {
-    console.log("object");
     document.location.reload();
 }
 
@@ -43,8 +44,14 @@ function showGameOverScreen() {
     gameOverScreen.classList.remove('hidden');
 }
 
+function showWinGameScreen() {
+    containerGame.classList.add('hidden');
+    winScreen.classList.remove('hidden');
+}
+
 startButton.addEventListener("click", startGame);
 instructionsButton.addEventListener("click", showInstructions);
 backButton.addEventListener("click", goBackToHomeScreen);
-restartButton.addEventListener("click", restartGame);
+restartButton1.addEventListener("click", restartGame);
+restartButton2.addEventListener("click", restartGame);
 
