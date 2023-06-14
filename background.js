@@ -6,7 +6,7 @@ class Background {
         this.width = this.ctx.canvas.width;
         this.height = this.ctx.canvas.height;
         this.image = new Image();
-        this.image.src = "./images/futuristic-city-green-valley-among-mountains_155327-15.jpg";
+        this.image.src = imageSrc;
 
         this.image.onload = () => {
             this.isReady = true;

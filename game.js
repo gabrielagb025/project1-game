@@ -2,7 +2,9 @@ class Game {
     constructor(ctx) {
         this.ctx = ctx;
         this.levelSelected = 0;
-        this.background = new Background(ctx);
+        this.background = new Background(ctx, LEVELS[this.levelSelected].background);
+        this.leftCloud = new LeftCloud(ctx, LEVELS[this.levelSelected].leftCloud);
+        this.rightCloud = new RightCloud(ctx, LEVELS[this.levelSelected].rightCloud);
         this.player = new Player(ctx, this);
         this.lives = [new Life(this.ctx, 900, 20), new Life(this.ctx, 950, 20), new Life(this.ctx, 1000, 20) ];
         this.floorObstacles = [];
@@ -31,7 +33,7 @@ class Game {
             };
 
             
-           /* if (this.counter % randomNumber === 0) {
+            /*if (this.counter % randomNumber === 0) {
                 this.addFloorObstacle();
             }*/
 
@@ -41,7 +43,9 @@ class Game {
     draw() {   
         this.ctx.imageSmoothingEnabled = false;
 
-        this.background.draw();
+        this.background.draw(); 
+        this.leftCloud.draw();
+        this.rightCloud.draw();
         this.player.draw();
         this.lives.forEach((life) => {
             life.draw();
@@ -56,6 +60,8 @@ class Game {
 
     move() {
         this.player.move();
+        this.leftCloud.move();
+        this.rightCloud.move();
         this.obstacles.forEach((obstacle) => {
             obstacle.move();
         });
@@ -83,15 +89,15 @@ class Game {
     }
 
     addFloorObstacle() {
-        const width = 35;
-        const xOptions = [-35, this.ctx.canvas.width + 35];
+        const width = 45;
+        const xOptions = [-45, this.ctx.canvas.width + 45];
         const randomIndex = Math.round(Math.random());
         const x = xOptions[randomIndex];
-        const y = 490;
-        const height = 35;
-        const vx = x < 0 ? 5 : -5;
+        const y = 475;
+        const height = 45;
+        const vx = x < 0 ? 4 : -4;
 
-        const newFloorObstacle = new FloorObstacle(this.ctx, x, y, width, height, vx);
+        const newFloorObstacle = new FloorObstacle(this.ctx, this, x, y, width, height, vx);
         this.floorObstacles.push(newFloorObstacle);
     }
 
@@ -128,6 +134,7 @@ class Game {
                     if (valuePoints === 0) {
                         this.nextLevel();
                     }
+
                 } else {
                     console.log("este es malo");
                     this.obstacles.splice(index, 1);
@@ -165,14 +172,31 @@ class Game {
     }
     
     nextLevel() {
-        clearInterval(this.intervalId);
+        if (this.levelSelected < LEVELS.length - 1) {
+            clearInterval(this.intervalId);
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
         this.ctx.font = '32px Arial';
         this.ctx.fillText('pasando de nivel', (this.ctx.canvas.width / 2) - 50, (this.ctx.canvas.height / 2) - 20);
         setTimeout(() => {
             this.levelSelected++;
             this.scores = LEVELS[this.levelSelected].scores;
+            this.background = new Background(ctx, LEVELS[this.levelSelected].background);
+            this.leftCloud = new LeftCloud(ctx, LEVELS[this.levelSelected].leftCloud);
+            this.rightCloud = new RightCloud(ctx, LEVELS[this.levelSelected].rightCloud);
+            this.lives = [new Life(this.ctx, 900, 20), new Life(this.ctx, 950, 20), new Life(this.ctx, 1000, 20) ];
             this.start();
-        }, 5000);
+        }, 2000);
+        } else {
+            this.winGame();
+        }
+        
+    }
+
+    winGame() {
+            clearInterval(this.intervalId);
+            this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+            this.ctx.font = '32px Arial';
+            this.ctx.fillText('ganaste', (this.ctx.canvas.width / 2) - 50, (this.ctx.canvas.height / 2) - 20);
+            console.log("ganaste");
     }
 } 

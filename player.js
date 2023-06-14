@@ -3,7 +3,7 @@ class Player {
         this.ctx = ctx;
         this.game = game;
         this.x = 300;
-        this.y = 480;
+        this.y = 460;
         this.width = 110;
 
         this.xFrame = 0;
@@ -54,9 +54,9 @@ class Player {
             )
         }
 
-        this.ctx.beginPath();
+        /*this.ctx.beginPath();
         this.ctx.rect(this.x, this.y, this.width, this.height);
-        this.ctx.stroke();
+        this.ctx.stroke();*/
     }
 
     move() {
