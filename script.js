@@ -9,6 +9,7 @@ const backButton = document.querySelector("#back-button");
 const restartButton1 = document.querySelector("#restart-button1");
 const restartButton2 = document.querySelector("#restart-button2");
 const goHomeScreenButton = document.querySelector("#go-home-screen-button");
+const musicButton = document.querySelector("#music-button");
 
 const containerGame = document.querySelector(".container-game");
 const canvas = document.querySelector("#my-canvas");
@@ -49,9 +50,19 @@ function showWinGameScreen() {
     winScreen.classList.remove('hidden');
 }
 
+function noMusic() {
+    if(game.overallMusic.paused){
+        game.overallMusic.play();
+    } else {
+        game.overallMusic.pause();
+    }
+    
+}
+
 startButton.addEventListener("click", startGame);
 instructionsButton.addEventListener("click", showInstructions);
 backButton.addEventListener("click", goBackToHomeScreen);
 restartButton1.addEventListener("click", restartGame);
 restartButton2.addEventListener("click", restartGame);
+musicButton.addEventListener("click", noMusic);
 

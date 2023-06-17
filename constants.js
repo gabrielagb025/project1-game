@@ -51,7 +51,7 @@ const LEVEL_2 = {
 
     numCounter: 80,
 
-    speedY: 5
+    speedY: 4
 
 };
 
@@ -74,7 +74,7 @@ const LEVEL_3 = {
 
     numCounter: 80,
 
-    speedY: 6
+    speedY: 5
 
 };
 

@@ -112,6 +112,11 @@ class Game {
             }
             this.rabbit.draw();
             this.rabbit.counter++;
+
+            this.ctx.fillStyle = "#fed168";
+            this.ctx.fillText("On the way to the next journey...", 150, 325);;
+            this.ctx.font = "50px Geologica"
+
         }, 1000 / 60);
     }
 
@@ -219,7 +224,7 @@ class Game {
     gameOver() {
         clearInterval(this.intervalId);
         showGameOverScreen(); 
-        this.overallMusic.volume = 0;  
+        this.overallMusic.pause();  
     }
     
     nextLevel() {
@@ -235,7 +240,7 @@ class Game {
             this.lives = [new Life(this.ctx, 900, 20), new Life(this.ctx, 950, 20), new Life(this.ctx, 1000, 20) ];
             clearInterval(this.loopIntervalId);
             this.start();
-        }, 2000);
+        }, 3000);
         } else {
             this.winGame();
         }
