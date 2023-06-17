@@ -140,6 +140,16 @@ class Player {
 
     }
 
+    animationLoop() {
+        this.yFrame = 1;
+            if (this.game.counter % 10 === 0) {
+                this.xFrame++;
+                if (this.xFrame >= this.xFramesCount) {
+                    this.xFrame = 0;
+                }
+            }
+    }
+
     onKeyEvent(event) {
 
         const eventDown = event.type === "keydown";

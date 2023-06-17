@@ -12,6 +12,28 @@ class Game {
     
         this.scores = LEVELS[this.levelSelected].scores;
 
+        this.carrotImage = new Image();
+        this.carrotImage.src = "./images/zanahoria sprite.png";
+        this.carrotImage.onload = () => {
+            this.isReady = true;
+        }
+
+        this.rabbit = new RabbitLoop(ctx);
+
+        this.overallMusic = new Audio();
+        this.overallMusic.src = './sounds/game music.mp3';
+        this.overallMusic.loop = true;
+        this.overallMusic.volume = 0.3;
+        this.overallMusic.play();
+
+        this.catchEggMusic = new Audio();
+        this.catchEggMusic.src = './sounds/catch egg2.wav';
+        this.catchEggMusic.volume = 0.3;
+        
+        this.looseLifeMusic = new Audio();
+        this.looseLifeMusic.src = './sounds/lose.wav';
+        this.looseLifeMusic.volume = 0.3;
+
         this.intervalId = null;
         this.counter = 0;
     }
@@ -78,6 +100,20 @@ class Game {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
         this.obstacles = this.obstacles.filter((obstacle) => obstacle.y < this.ctx.canvas.height);
     }
+    
+    startLoop(){
+        this.loopIntervalId = setInterval(() => {
+            this.clear();
+            this.rabbit.move();
+            this.ctx.fillStyle = "#60c659";
+            this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+            if (this.isReady = true) {
+                this.ctx.drawImage(this.carrotImage, 70, 50, 120, 50);
+            }
+            this.rabbit.draw();
+            this.rabbit.counter++;
+        }, 1000 / 60);
+    }
 
     addObstacle() {
         const width = 50;
@@ -128,10 +164,12 @@ class Game {
              
                 if (scoresColors.includes(obstacle.type)) {
                     console.log("este es bueno");
+                    this.catchEggMusic.play();
                     this.obstacles.splice(index, 1);
                     if (this.scores[obstacle.type] >= 1) {
                         this.scores[obstacle.type]--
                     } else {
+                        this.looseLifeMusic.play();
                         this.lives.shift();
                     }
                     points(this.scores);
@@ -144,6 +182,7 @@ class Game {
                 } else {
                     console.log("este es malo");
                     this.obstacles.splice(index, 1);
+                    this.looseLifeMusic.play();
                     this.lives.shift();
                     
                         if (this.lives.length === 0) {
@@ -158,8 +197,11 @@ class Game {
                 this.player.x <= floorObstacle.x + floorObstacle.width &&
                 this.player.y + this.player.height >= floorObstacle.y &&
                 this.player.y <= floorObstacle.y + floorObstacle.height) {
-                    this.floorObstacles.splice(index, 1)
+                   
+                    this.floorObstacles.splice(index, 1);
                     this.lives.shift();
+                    this.looseLifeMusic.play();
+                    
 
                         if (this.lives.length === 0) {
                             this.gameOver();
@@ -168,21 +210,22 @@ class Game {
         })
     }
 
+
+
     onKeyEvent(event) {
         this.player.onKeyEvent(event);
     }
     
     gameOver() {
         clearInterval(this.intervalId);
-        showGameOverScreen();    
+        showGameOverScreen(); 
+        this.overallMusic.volume = 0;  
     }
     
     nextLevel() {
         if (this.levelSelected < LEVELS.length - 1) {
             clearInterval(this.intervalId);
-        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-        this.ctx.font = '32px Arial';
-        this.ctx.fillText('pasando de nivel', (this.ctx.canvas.width / 2) - 50, (this.ctx.canvas.height / 2) - 20);
+        this.startLoop();
         setTimeout(() => {
             this.levelSelected++;
             this.scores = LEVELS[this.levelSelected].scores;
@@ -190,6 +233,7 @@ class Game {
             this.leftCloud = new LeftCloud(ctx, LEVELS[this.levelSelected].leftCloud);
             this.rightCloud = new RightCloud(ctx, LEVELS[this.levelSelected].rightCloud);
             this.lives = [new Life(this.ctx, 900, 20), new Life(this.ctx, 950, 20), new Life(this.ctx, 1000, 20) ];
+            clearInterval(this.loopIntervalId);
             this.start();
         }, 2000);
         } else {

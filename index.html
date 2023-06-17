@@ -11,7 +11,9 @@
 <body>
 
     <div class="home-screen">
-      <div id="home-screen-image"></div>
+      <div id="home-screen-image">
+       <!--<img src="./images/portada con sombra.PNG" alt="">--> 
+      </div>
       <div id="home-screen-buttons">
         <button class="button" id="start-button">Start</button>
         <button class="button" id="instructions-button">Instructions</button>
@@ -19,7 +21,8 @@
     </div>
 
     <div class="instructions-screen hidden">
-      <div id="instructions-image"></div>
+      <div id="instructions-image">
+      </div>
       <div id="back-button-container">
         <button class="button" id="back-button">Back</button>
       </div>
@@ -28,8 +31,11 @@
     <div class="container-game hidden"> 
         <canvas id="my-canvas" width="1100" height="650"></canvas>
         <div class="container-logo-points">
-          <div id="logo-image"></div>
+          <div id="logo-image">
+            <img src="./images/portada con sombra.PNG" alt="">
+          </div>
           <div id="points-container">
+            <img src="./images/wood.png" alt="">
           </div>
         </div>
     </div>  
@@ -52,6 +58,7 @@
 
 
     <script src="./constants.js"></script>
+    <script src="./rabbit loop.js"></script>
     <script src="./leftcloud.js"></script>
     <script src="./rightcloud.js"></script>
     <script src="./background.js"></script>
