@@ -114,7 +114,7 @@ class Game {
             this.rabbit.counter++;
 
             this.ctx.fillStyle = "#fed168";
-            this.ctx.fillText("On the way to the next journey...", 150, 325);;
+            this.ctx.fillText("De camino a la siguiente aventura...", 100, 325);;
             this.ctx.font = "50px Geologica"
 
         }, 1000 / 60);
@@ -248,12 +248,7 @@ class Game {
     }
 
     winGame() {
-            console.log("ganaste");
+            clearInterval(this.intervalId);
             showWinGameScreen();
-            /*clearInterval(this.intervalId);
-            this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-            this.ctx.font = '32px Arial';
-            this.ctx.fillText('ganaste', (this.ctx.canvas.width / 2) - 50, (this.ctx.canvas.height / 2) - 20);
-            console.log("ganaste");*/
     }
 } 

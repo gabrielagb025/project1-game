@@ -50,11 +50,11 @@ html, body {
       font-size: 20px;
       width: 200px;
       padding: 20px 40px;
-      border: solid 3.5px #a58850;
+      border: solid 3.5px #985d2a;
       background-color:#fed168;
       border-radius: 10px;
-      color:#8e6c39;
-      box-shadow: 5px 5px 2px rgba(134, 88, 32, 0.705);
+      color:#885020;
+      box-shadow: 5px 5px 2px rgba(146, 99, 41, 0.705);
     }
 
     .button:hover {
@@ -69,19 +69,40 @@ html, body {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #98b8c5;
+      background-color: #8bcacf;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
 
-    #instructions-image {
-      border: 1px solid black;
-      width: 500px;
+    #instructions-container {
+      width: 650px;
       height: 400px;
-      margin-top: -40px;
       margin-bottom: 20px;
+    }
+
+    #instructions-text {
+      width: 650px;
+      height: 200px;
+    }
+
+    #instructions-text p {
+      font-size: 18px;
+      color: #885020;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    #arrows-image {
+      width: 650px;
+      height: 160px;
+      margin-top: 25px;
+    }
+
+    #arrows-image img {
+      width: 650px;
+      height: 200px;
     }
 
     #back-button-container {
@@ -96,7 +117,7 @@ html, body {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #c6ae68;
+      background-color: #84af5e;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -112,11 +133,15 @@ html, body {
     }
 
     #game-over-image {
-      border: 1px solid black;
-      width: 500px;
-      height: 400px;
+      width: 700px;
+      height: 467px;
       margin-top: -40px;
       margin-bottom: 20px;
+    }
+
+    #game-over-image img {
+      width: 700px;
+      height: 467px;
     }
 
     .win-screen {
@@ -125,7 +150,7 @@ html, body {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #c6ae68;
+      background-color: #84af5e;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -141,11 +166,15 @@ html, body {
     }
 
     #win-image {
-      border: 1px solid black;
-      width: 500px;
-      height: 400px;
+      width: 700px;
+      height: 467px;
       margin-top: -40px;
       margin-bottom: 20px;
+    }
+
+    #win-image img {
+      width: 700px;
+      height: 467px;
     }
 
   .container-game {
