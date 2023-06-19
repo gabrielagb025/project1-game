@@ -27,11 +27,11 @@ class Game {
         this.overallMusic.play();
 
         this.catchEggMusic = new Audio();
-        this.catchEggMusic.src = './sounds/catch egg2.wav';
+        this.catchEggMusic.src = './sounds/good.wav';
         this.catchEggMusic.volume = 0.3;
         
         this.looseLifeMusic = new Audio();
-        this.looseLifeMusic.src = './sounds/lose.wav';
+        this.looseLifeMusic.src = './sounds/bad.wav';
         this.looseLifeMusic.volume = 0.3;
 
         this.intervalId = null;

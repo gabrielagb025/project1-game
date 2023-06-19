@@ -200,6 +200,10 @@ html, body {
     margin-left: 20px;
   }
 
+  #music-button:focus {
+    outline: none;
+  }
+
   #music-button:hover {
     cursor: pointer;
   }

@@ -25,6 +25,8 @@ const LEVEL_1 = {
 
     scores: {
         yellow: 1,
+        blue:2,
+        pink: 1
     },
 
     numCounter: 80,
@@ -42,11 +44,9 @@ const LEVEL_2 = {
     rightCloud: "./images/fondos con nubes aparte/NIVEL-2/NUBES DCHA.PNG",
 
     scores: {
-        pink: 1
-        /*pink: 3,
-        yellow: 5,
-        orange: 3,
-        green: 4*/
+        pink: 1,
+        orange: 1,
+        green: 2
     },
 
     numCounter: 80,
@@ -64,12 +64,9 @@ const LEVEL_3 = {
     rightCloud: "./images/fondos con nubes aparte/NIVEL-3/NUBES DCHA.PNG",
 
     scores: {
-        blue: 1
-        /*red: 5,
-        yellow: 3,
-        blue: 5,
-        green: 4,
-        pink: 2*/
+        blue: 2,
+        red: 1,
+        pink: 1
     },
 
     numCounter: 80,
